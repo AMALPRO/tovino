@@ -2,7 +2,6 @@
 import asyncio
 import re
 import ast
-import time
 import math
 from pyrogram.errors.exceptions.bad_request_400 import MediaEmpty, PhotoInvalidDimensions, WebpageMediaEmpty
 from Script import script
@@ -10,8 +9,8 @@ import pyrogram
 from database.connections_mdb import active_connection, all_connections, delete_connection, if_active, make_active, \
     make_inactive
 from info import ADMINS, AUTH_CHANNEL, AUTH_USERS, CUSTOM_FILE_CAPTION, AUTH_GROUPS, P_TTI_SHOW_OFF, IMDB, \
-    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, DELETE_TIME, APPROVED, WELCOME_TEXT, JOIN_CHANNEL_TEXT, JOIN_CHANNEL_LINK
-from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, Message, User, ChatJoinRequest
+    SINGLE_BUTTON, SPELL_CHECK_REPLY, IMDB_TEMPLATE, DELETE_TIME
+from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery
 from pyrogram import Client, filters, enums
 from pyrogram.errors import FloodWait, UserIsBlocked, MessageNotModified, PeerIdInvalid
 from utils import get_size, is_subscribed, get_poster, search_gagala, temp, get_settings, save_group_settings
@@ -31,24 +30,7 @@ BUTTONS = {}
 SPELL_CHECK = {}
 
 
-
-@Client.on_chat_join_request(filters.group | filters.channel)
-async def autoapprove(client: Client, message: ChatJoinRequest):
-    chat = message.chat
-    user = message.from_user
-    print(f"{user.first_name} Joined 🤝") # Logs
-    await client.approve_chat_join_request(chat_id=chat.id, user_id=user.id)
-    if APPROVED == "on":
-        welcome_text = WELCOME_TEXT.format(mention=user.mention, title=chat.title)
-        button = None
-        if JOIN_CHANNEL_LINK:
-            button = InlineKeyboardMarkup([[InlineKeyboardButton(JOIN_CHANNEL_TEXT, url=JOIN_CHANNEL_LINK)]])
-        await client.send_message(chat_id=user.id, text=welcome_text, reply_markup=button)
-
-
-
-
-@Client.on_message(filters.private | filters.group & filters.text & filters.incoming)
+@Client.on_message(filters.group & filters.text & filters.incoming)
 async def give_filter(client, message):
     k = await manual_filters(client, message)
     if k == False:
@@ -670,7 +652,7 @@ async def auto_filter(client, msg, spoll=False):
             return
         if 2 < len(message.text) < 100:
             search = message.text
-            files, offset, total_results = await get_search_results(search.lower(), 0, True)
+            files, offset, total_results = await get_search_results(search.lower(), offset=0, filter=True)
             if not files:
                 if settings["spell_check"]:
                     return await advantage_spell_chok(msg)
