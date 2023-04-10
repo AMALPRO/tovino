@@ -37,12 +37,6 @@ DATABASE_NAME = environ.get('DATABASE_NAME', "Rajappan")
 COLLECTION_NAME = environ.get('COLLECTION_NAME', 'Telegram_files')
 
 # Others
-SPELL_IMG = environ.get("SPELL_IMG", "https://telegra.ph/file/2a888a370f479f4338f7c.jpg")
-APPROVED = environ.get("APPROVED_WELCOME", "on").lower()
-MAX_B_TN = environ.get("MAX_B_TN", "10")
-WELCOME_TEXT = environ.get("APPROVED_WELCOME_TEXT", "Hello {mention}\nWelcome To {title}\n\nYour Auto Approved")
-JOIN_CHANNEL_TEXT = environ.get("JOIN_CHANNEL_TEXT", "Join Our Movie Channel")
-JOIN_CHANNEL_LINK = environ.get("JOIN_CHANNEL_LINK")
 LOG_CHANNEL = int(environ.get('LOG_CHANNEL', 0))
 SUPPORT_CHAT = environ.get('SUPPORT_CHAT', 'TeamEvamaria')
 P_TTI_SHOW_OFF = is_enabled((environ.get('P_TTI_SHOW_OFF', "False")), False)
