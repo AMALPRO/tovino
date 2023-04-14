@@ -108,8 +108,8 @@ async def next_page(bot, query):
     )
     btn.insert(1,
         [ 
-            InlineKeyboardButton(f'ᴍᴏᴠɪᴇs', 'dupe'),
-            InlineKeyboardButton(f'sᴇʀɪᴇs', 'dupe'),
+            InlineKeyboardButton(f'ᴍᴏᴠɪᴇs', 'info'),
+            InlineKeyboardButton(f'sᴇʀɪᴇs', 'series'),
             InlineKeyboardButton(f'ᴛɪᴘs', 'tips')
         ]
     )
