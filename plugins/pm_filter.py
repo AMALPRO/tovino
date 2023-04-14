@@ -29,6 +29,10 @@ logger.setLevel(logging.ERROR)
 BUTTONS = {}
 SPELL_CHECK = {}
 
+SRS_TXT = """...............\nꜱᴇʀɪᴇꜱ ʀᴇQᴜᴇꜱᴛ ꜰᴏʀᴍᴀᴛ\n...............\nɢᴏ ᴛᴏ ɢᴏᴏɢʟᴇ ➠ ᴛʏᴘᴇ ꜱᴇʀɪᴇꜱ ɴᴀᴍᴇ ➠ ᴄᴏᴘʏ\nᴄᴏʀʀᴇᴄᴛ ɴᴀᴍᴇ ➠ ᴘᴀꜱᴛᴇ ᴛʜɪꜱ ɢʀᴏᴜᴘ\n\nᴇxᴀᴍᴘʟᴇ:ʟᴏᴋɪ ꜱ01ᴇ01\n\n🚱 ᴅᴏɴᴛ ᴜꜱᴇ ➠':(!,./)"""
+MVS_TXT = """...............\nᴍᴏᴠɪᴇ ʀᴇQᴜᴇꜱᴛ ꜰᴏʀᴍᴀᴛ\n...............\nɢᴏ ᴛᴏ ɢᴏᴏɢʟᴇ ➠ ᴛʏᴘᴇ ᴍᴏᴠɪᴇ ɴᴀᴍᴇ ➠ ᴄᴏᴘʏ\nᴄᴏʀʀᴇᴄᴛ ɴᴀᴍᴇ ➠ ᴘᴀꜱᴛᴇ ᴛʜɪꜱ ɢʀᴏᴜᴘ\n\nᴇxᴀᴍᴘʟᴇ: ᴜɴᴄʜᴀʀᴛᴇᴅ\n\n🚱 ᴅᴏɴᴛ ᴜꜱᴇ ➠':(!,./)"""
+
+
 
 @Client.on_chat_join_request(filters.group | filters.channel)
 async def autoapprove(client: Client, message: ChatJoinRequest):
@@ -650,8 +654,16 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data == 'tips':
 
-        await query.answer("sᴇɴᴅ ᴄᴏʀʀᴇᴄᴛ ᴍᴏᴠɪᴇ/sᴇʀɪᴇs ɴᴀᴍᴇ ғᴏʀ ʙᴇᴛᴛᴇʀ ʀᴇsᴜʟᴛs .\nᴛᴏ ɢᴇᴛ ʙᴇᴛᴛᴇʀ ʀᴇsᴜʟᴛ ғᴏʀ sᴇʀɪᴇs sᴇᴀʀᴄʜ ʟɪᴋᴇ ᴇxᴀᴍᴘʟᴇ ɢɪᴠᴇɴ, Eg - Peaky Blinders S01E01\n\n © 𝐓𝐨𝐯𝐢𝐧𝐨𝐗𝐚𝐮𝐭𝐨𝐟𝐢𝐥𝐭𝐞𝐫𝐛𝐨𝐭", True)
-
+        await query.answer("𝖳𝗁𝗂𝗌 𝖬𝖾𝗌𝗌𝖺𝗀𝖾 𝖶𝗂𝗅𝗅 𝖡𝖾 𝖣𝖾𝗅𝖾𝗍𝖾𝖽 𝖠𝖿𝗍𝖾𝗋 5 𝖬𝗂𝗇𝗎𝗍𝖾𝗌 𝗍𝗈 𝖯𝗋𝖾𝗏𝖾𝗇𝗍 𝖢𝗈𝗉𝗒𝗋𝗂𝗀𝗁𝗍 !\n\n𝖳𝗁𝖺𝗇𝗄 𝖸𝗈𝗎 𝖥𝗈𝗋 𝖴𝗌𝗂𝗇𝗀 𝖬𝖾\n\n © 𝐓𝐨𝐯𝐢𝐧𝐨𝐗𝐚𝐮𝐭𝐨𝐟𝐢𝐥𝐭𝐞𝐫𝐛𝐨𝐭", True)
+        
+    elif query.data == 'series':
+        
+        await query.answer(SRS_TXT, True)
+        
+    elif query.data == 'info':
+        
+        await query.answer(MVS_TXT, True)
+        
     try: await query.answer('Your Results are there in Filter Button') 
 
     except: pass 
@@ -716,9 +728,9 @@ async def auto_filter(client, msg, spoll=False):
 
         [
 
-            InlineKeyboardButton(f'ᴍᴏᴠɪᴇs', 'dupe'),
+            InlineKeyboardButton(f'ᴍᴏᴠɪᴇs', 'info'),
 
-            InlineKeyboardButton(f'sᴇʀɪᴇs', 'dupe'),
+            InlineKeyboardButton(f'sᴇʀɪᴇs', 'series'),
 
             InlineKeyboardButton(f'ᴛɪᴘs', 'tips')
 
