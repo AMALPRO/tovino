@@ -816,12 +816,14 @@ async def advantage_spell_chok(msg):
     g_s += await search_gagala(msg.text)
     gs_parsed = []
     if not g_s:
-        k = await msg.reply_photo(
-           photo=SPELL_IMG,
-           caption="I couldn't find any movie in that name."
-        await asyncio.sleep(8)
-        await k.delete()
-        return
+    k = await msg.reply_photo(
+        photo=SPELL_IMG,
+        caption="I couldn't find any movie in that name."
+    )
+    await asyncio.sleep(8)
+    await k.delete()
+    return
+
     regex = re.compile(r".*(imdb|wikipedia).*", re.IGNORECASE)  # look for imdb / wiki results
     gs = list(filter(regex.match, g_s))
     gs_parsed = [re.sub(
