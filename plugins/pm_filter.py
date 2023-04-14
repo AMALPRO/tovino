@@ -103,7 +103,7 @@ async def next_page(bot, query):
 
     btn.insert(0, 
         [
-            InlineKeyboardButton(f'♨️ {search} ♨️ ', 'dupe')
+            InlineKeyboardButton(f'♨️ {search} ♨️ ', url="https://t.me/TovinoXautofilterbot")
         ]
     )
     btn.insert(1,
@@ -718,7 +718,7 @@ async def auto_filter(client, msg, spoll=False):
 
         [
 
-            InlineKeyboardButton(f'♨️ {search} ♨️ ', 'dupe')
+            InlineKeyboardButton(f'♨️ {search} ♨️ ', url="https://t.me/TovinoXautofilterbot")
 
         ]
 
