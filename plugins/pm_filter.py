@@ -103,10 +103,15 @@ async def next_page(bot, query):
 
     btn.insert(0, 
         [
-            InlineKeyboardButton(f'♨️ {search} ♨️ ', url="https://t.me/TovinoXautofilterbot")
+            InlineKeyboardButton(f'♨️ {search} ♨️ ', 'xxx' )
         ]
     )
-    btn.insert(1,
+    btn.insert(1, 
+        [
+            InlineKeyboardButton(f'ᴄʜᴇᴄᴋ ʙᴏᴛ ᴘᴍ 📨 ', url="https://t.me/TovinoXautofilterbot")
+        ]
+    )
+    btn.insert(2,
         [ 
             InlineKeyboardButton(f'ᴍᴏᴠɪᴇs', 'info'),
             InlineKeyboardButton(f'sᴇʀɪᴇs', 'series'),
@@ -656,6 +661,10 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
         await query.answer("𝖳𝗁𝗂𝗌 𝖬𝖾𝗌𝗌𝖺𝗀𝖾 𝖶𝗂𝗅𝗅 𝖡𝖾 𝖣𝖾𝗅𝖾𝗍𝖾𝖽 𝖠𝖿𝗍𝖾𝗋 5 𝖬𝗂𝗇𝗎𝗍𝖾𝗌 𝗍𝗈 𝖯𝗋𝖾𝗏𝖾𝗇𝗍 𝖢𝗈𝗉𝗒𝗋𝗂𝗀𝗁𝗍 !\n\n𝖳𝗁𝖺𝗇𝗄 𝖸𝗈𝗎 𝖥𝗈𝗋 𝖴𝗌𝗂𝗇𝗀 𝖬𝖾\n\n © 𝐓𝐨𝐯𝐢𝐧𝐨𝐗𝐚𝐮𝐭𝐨𝐟𝐢𝐥𝐭𝐞𝐫𝐛𝐨𝐭", True)
         
+    elif query.data == 'xxx':
+
+        await query.answer("𝖧𝖾𝗒 𝖡𝗋𝗈 ☺️\n\n★ 𝖢𝗅𝗂𝖼𝗄 𝖮𝗇 𝖳𝗁𝖾 𝖡𝗎𝗍𝗍𝗈𝗇 𝖻𝖾𝗅𝗈𝗐 𝖳𝗁𝖾 𝖥𝗂𝗅𝖾𝗌 𝖸𝗈𝗎 𝖶𝖺𝗇𝗍 .👇🏻", True)
+            
     elif query.data == 'series':
         
         await query.answer(SRS_TXT, True)
@@ -718,13 +727,21 @@ async def auto_filter(client, msg, spoll=False):
 
         [
 
-            InlineKeyboardButton(f'♨️ {search} ♨️ ', url="https://t.me/TovinoXautofilterbot")
+            InlineKeyboardButton(f'♨️ {search} ♨️ ', 'xxx')
+
+        ]      
+
+    )
+    
+    btn.insert(1, 
+
+        [
+
+            InlineKeyboardButton(f'ᴄʜᴇᴄᴋ ʙᴏᴛ ᴘᴍ 📨 ', url="https://t.me/TovinoXautofilterbot")
 
         ]
 
-    )
-
-    btn.insert(1,
+    btn.insert(2,
 
         [
 
