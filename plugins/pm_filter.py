@@ -822,7 +822,6 @@ async def advantage_spell_chok(msg):
     )
     await asyncio.sleep(8)
     await k.delete()
-    return
 
     regex = re.compile(r".*(imdb|wikipedia).*", re.IGNORECASE)  # look for imdb / wiki results
     gs = list(filter(regex.match, g_s))
