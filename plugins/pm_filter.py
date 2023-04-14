@@ -817,8 +817,8 @@ async def advantage_spell_chok(msg):
     gs_parsed = []
     if not g_s:
         k = await msg.reply_photo(
-            photo=SPELL_IMG,
-            caption="I couldn't find any movie in that name."
+           photo=SPELL_IMG,
+           caption="I couldn't find any movie in that name."
         await asyncio.sleep(8)
         await k.delete()
         return
