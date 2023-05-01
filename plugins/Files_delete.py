@@ -1,13 +1,13 @@
-from info import ADMINS, COLLECTION_NAME, DATABASE_NAME, DATABASE_URI, ADMINS
+from info import ADMINS, COLLECTION_NAME, DATABASE_NAME, DATABASE_URI
 from pyrogram import Client, filters
 from pyrogram.types import InlineKeyboardMarkup, InlineKeyboardButton
 import pymongo
 from pymongo import MongoClient
 
 # set up the MongoDB client
-mongo_client = MongoClient("DATABASE_URI")
-mongo_db = mongo_client["DATABASE_NAME"]
-mongo_collection = mongo_db["COLLECTION_NAME"]
+mongo_client = MongoClient(DATABASE_URI)
+mongo_db = mongo_client[DATABASE_NAME]
+mongo_collection = mongo_db[COLLECTION_NAME]
 
 # define the admin user ID
 ADMIN_USER_ID = ADMINS # replace with your admin user ID
@@ -31,6 +31,9 @@ async def delete_command(client, message):
         # send a confirmation message
         await message.reply_text("All files with 'predvd' in the name have been deleted.")
     else:
+        # delete all files containing "predvd" in the name from the MongoDB collection
+        mongo_collection.delete_many({"file_name": {"$regex": ".*predvd.*"}})
+
         # check if the file exists in the MongoDB collection
         if mongo_collection.find_one({"file_name": file_name}) is None:
             await message.reply_text(f"File `{file_name}` not found in the database.")
